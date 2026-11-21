@@ -74,8 +74,6 @@ interface AppContextType {
   setWhatsappPhone: (phone: string) => void;
   addNewRule: (rule: Omit<AutoRule, 'id'>) => void;
   runRuleCheckSimulator: () => void;
-  deviceMode: 'mobile' | 'responsive';
-  setDeviceMode: (mode: 'mobile' | 'responsive') => void;
 }
 
 const defaultFilter: FilterState = {
@@ -108,7 +106,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState<boolean>(false);
   const [isNewRuleModalOpen, setIsNewRuleModalOpen] = useState<boolean>(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState<boolean>(false);
-  const [deviceMode, setDeviceMode] = useState<'mobile' | 'responsive'>('mobile');
 
   const [filterState, setFilterState] = useState<FilterState>(defaultFilter);
   const [toast, setToast] = useState<ToastInfo | null>(null);
@@ -342,8 +339,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         setWhatsappPhone,
         addNewRule,
         runRuleCheckSimulator,
-        deviceMode,
-        setDeviceMode,
       }}
     >
       {children}
